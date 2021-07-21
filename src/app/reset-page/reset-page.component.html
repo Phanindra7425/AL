@@ -1,0 +1,46 @@
+<form [formGroup]="form"  class="resetformPage" #f="ngForm">
+
+    <div *ngIf="form.errors">Passwords dont match</div>
+
+    <div class= "AccountForm">
+
+        <div class="title-start">
+            <label>Reset Password</label>
+        </div>
+
+        <div class="container">
+            <label>Email Address</label>
+            <input class="form-control" formControlName="emailaddress">
+            <div *ngIf="emailaddress.touched && emailaddress.invalid" class="alert alert-box error-text">
+                <div *ngIf="emailaddress.errors.required">*Email address is required</div>
+                <div *ngIf="emailaddress.errors.email">*Please enter a valid email address</div>
+                <div *ngIf="emailaddress.errors.cannotContainSpacesInEmail">*Cannot contain spaces in middle</div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <label>New Password</label>
+            <input class="form-control" formControlName="newpassword">
+            <div *ngIf="newpassword.touched && newpassword.invalid" class="alert alert-box error-text">
+                <div *ngIf="newpassword.errors.required">*Password is required</div>
+            </div>        
+        </div>
+    
+        <div class="container">
+            <label>Confirm New Password</label>
+            <input class="form-control" formControlName="confirmpassword">
+            <div *ngIf="confirmpassword.touched && confirmpassword.invalid" class="alert alert-box error-text">
+                <div *ngIf="confirmpassword.errors.required">*Confirm Password is required</div>
+            </div>
+            
+        </div>
+    
+        <button  class="btn btn-primary RegisterBtn" (click)="submit(newpassword,confirmpassword)" [disabled]="form.invalid">SUBMIT</button>
+        
+        <div class="link">
+            <a href="url">Register</a>
+        </div>
+
+    </div>
+    
+</form>

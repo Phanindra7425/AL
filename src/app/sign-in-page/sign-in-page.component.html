@@ -1,0 +1,44 @@
+<form [formGroup]="form" class="Login LoginPage" >
+
+    <div class="Loginform">
+        <div class="title-start">
+            <label >Sign In To Your Account</label>
+        </div>
+    
+        <div class="container">
+            <label>Email Address</label>
+           <input formControlName="username" class="form-control">
+           <div *ngIf="username.touched && username.invalid" class="alert alert-box error-text">
+               <div *ngIf="username.errors.required">*Email address is required</div>
+               <div *ngIf="username.errors.email">*Please enter a valid email address</div>
+               <div *ngIf="username.errors.cannotContainSpacesInEmail">*Cannot contain spaces in middle</div>
+           </div>
+        </div>
+    
+        <div class="container">
+            <label>Password</label>
+           <input formControlName="password" class="form-control" (click)="enabled()">
+           <div *ngIf="password.touched && password.invalid" class="alert alert-box error-text">
+                <div *ngIf="password.errors.required">*Password is required</div>
+            </div>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" formControlName="keepmeSignedIn" form.value="true" > Keep me signed in.
+            </label>
+            
+        </div>
+    
+        <button class="btn btn-primary SignInButton">SignIn</button>
+
+    
+        <div class="link">
+            <a href="url">Register</a>
+        </div>
+
+        <!-- <p>{{ f.value | json}}</p> -->
+    </div>
+   
+    
+</form>
