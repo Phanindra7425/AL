@@ -21,7 +21,6 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NgModule,
     RouterModule.forRoot([
       {
         path:'',
