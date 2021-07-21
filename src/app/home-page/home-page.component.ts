@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'home-page',
+  selector: 'homepage',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
@@ -10,7 +9,6 @@ export class HomePageComponent{
 
   text: any = "Page loads";
 
-  constructor(private router:Router){}
 
   cart(){
     this.text = "cart form loads";
