@@ -1,0 +1,65 @@
+.homePage{
+    width: 100%;
+}
+
+.navigationbar{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
+    font-size: large;
+    font-weight: bolder;
+    background-color: grey;
+}
+
+.bi-bag-plus {
+    font-size: 30px;
+    margin: 10px;
+}
+.bi-person-fill{
+    font-size: 30px;
+    margin: 10px;
+}
+
+.bi-cart{
+    font-size: 30px;
+    margin: 10px;
+}
+
+.btn-home{
+    width: 150px;
+    height: 72px;
+    border-color: transparent;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.btn-right{
+    border-color: transparent;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+a {
+    color: black;
+}
+
+.nav-left{
+    width:60%
+}
+
+
+.nav-right1{
+    width: 20%;
+    align-items: center;
+}
+
+.nav-right2{
+    width: 20%;
+    align-items: center;
+}
+
+.cart{
+    width: 20%;
+}
