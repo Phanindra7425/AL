@@ -1,6 +1,5 @@
 .resetformPage{
     width: 100%;
-    overflow: scroll;
 }
 
 .AccountForm{
@@ -15,13 +14,13 @@
     border-radius: 50px;
     margin-top: 30px;
     margin-left: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     align-items: center;
-    font-weight: bold;
-    color: black;
-    background-color: grey;
+    background-color: black;
     border-color: transparent;
 }
+
+
 
 .title-start{
     font-size: 20px;
@@ -30,6 +29,25 @@
     font-weight: bold;
     font-style: normal;
 
+}
+
+.title-down{
+    margin-left: 65px;
+    font-size: 15px;
+    font-weight: bold;
+    font-weight: normal;
+    font-style: initial;
+}
+
+.SignInbtn{
+    width: 200px;
+    border-radius: 50px;
+    margin-left: 50px;
+    margin-top: 10px;
+    align-items: center;
+    font-weight: bold;
+    background-color: black;
+    border-color: transparent;
 }
 
 .alert-box{

@@ -7,23 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent{
 
-  text: any = "Page loads";
-
-
+  text: any;
   cart(){
     this.text = "cart form loads";
   }
-
-  account(){
-
-    this.text = "account form loads";
-  }
-
-  home(){
-    this.text = "home page reloads";
-    
-  }
-
-
 
 }

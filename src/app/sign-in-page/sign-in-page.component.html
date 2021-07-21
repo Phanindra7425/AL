@@ -22,7 +22,7 @@
                 <div *ngIf="password.errors.required">*Password is required</div>
             </div>
         </div>
-
+        <a class="forgotpswd" routerLink="/reset">Forgot Password</a>
         <div class="checkbox">
             <label>
                 <input type="checkbox" formControlName="keepmeSignedIn" form.value="true" > Keep me signed in.
@@ -34,7 +34,7 @@
 
     
         <div class="link">
-            <a href="url">Register</a>
+            <a routerLink="/signup">Register</a>
         </div>
 
         <!-- <p>{{ f.value | json}}</p> -->

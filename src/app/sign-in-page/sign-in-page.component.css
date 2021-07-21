@@ -1,6 +1,5 @@
 .LoginPage{
     width: 100%;
-    overflow: scroll;
 }
 .Loginform{
     margin: auto;
@@ -14,9 +13,7 @@
     margin-left: 50px;
     margin-bottom: 30px;
     align-items: center;
-    font-weight: bold;
-    color: black;
-    background-color: grey;
+    background-color: black;
     border-color: transparent;
 }
 
@@ -51,4 +48,10 @@
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
+}
+
+.forgotpswd{
+    margin-left: 190px;
+    font-size: small;
+    cursor: pointer;
 }

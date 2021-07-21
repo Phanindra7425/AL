@@ -37,10 +37,11 @@
     
         <button  class="btn btn-primary RegisterBtn" (click)="submit(newpassword,confirmpassword)" [disabled]="form.invalid">SUBMIT</button>
         
-        <div class="link">
-            <a href="url">Register</a>
+        <div class="title-down">
+            <label>Already have an account?</label>
         </div>
-
+    
+        <button routerLink="/signin" class="btn btn-primary SignInbtn">Sign in</button>
     </div>
     
 </form>

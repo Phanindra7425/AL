@@ -1,6 +1,5 @@
 .RegisterPage{
     width: 100%;
-    overflow: scroll;
 }
 .RegisterForm{
     margin: auto;
@@ -13,8 +12,7 @@
     margin: 30px;
     align-items: center;
     font-weight: bold;
-    color: black;
-    background-color: grey;
+    background-color: black;
     border-color: transparent;
 }
 
@@ -25,8 +23,7 @@
     margin-top: 10px;
     align-items: center;
     font-weight: bold;
-    color: black;
-    background-color: grey;
+    background-color: black;
     border-color: transparent;
 }
 

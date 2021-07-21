@@ -23,7 +23,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
-        path:'',
+        path:'home',
         component:HomePageComponent
       },
       {
@@ -37,7 +37,7 @@ import { RouterModule } from '@angular/router';
       {
         path:'reset',
         component:ResetPageComponent
-      },
+      }
     ]),
   ],
   providers: [],
