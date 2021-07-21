@@ -1,9 +1,12 @@
-<form class="Register RegisterPage" #R="ngForm" [formGroup]="form" (ngSubmit)="Register()">
+<form class="Register RegisterPage" #R="ngForm" [formGroup]="form" (ngSubmit)="Register(R)">
 
-    <div class="RegisterForm">
-        <div *ngIf="form.errors">
-            Please enter the below details
+    <div class="inputsbox">
+        <div *ngIf="form.errors" class="alert alert-box error-text">
+            *Please enter the below details
        </div>
+       <div *ngIf="errorMsg" class="alert alert-box error-text">
+            <a>{{errorMsg}}</a>
+        </div>
        <!-- <div>
            ICON
        </div> -->
@@ -65,13 +68,13 @@
            </label>
        </div>
    
-       <button class="btn btn-primary Registerbtn">Register</button>
+       <button class="btn btn-primary Submitbtn" >Register</button>
    
        <div class="title-down">
            <label>Already have an account?</label>
        </div>
    
-       <button routerLink="/signin" class="btn btn-primary SignInbtn">Sign in</button>
+       <button routerLink="/usersignin" [queryParams]="{page:1, order:'newest'}" class="btn btn-primary Submitbtn">Sign in</button>
     </div>
 
     <!-- <p>{{ R.value | json}}</p> -->

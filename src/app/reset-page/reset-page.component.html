@@ -1,14 +1,16 @@
 <form [formGroup]="form"  class="resetformPage" #f="ngForm">
 
-    <div *ngIf="form.errors">Passwords dont match</div>
+    <div *ngIf="form.errors" class="alert alert-box error-text">
+        Passwords dont match
+    </div>
 
-    <div class= "AccountForm">
+    <div class= "inputsbox">
 
         <div class="title-start">
             <label>Reset Password</label>
         </div>
 
-        <div class="container">
+        <div >
             <label>Email Address</label>
             <input class="form-control" formControlName="emailaddress">
             <div *ngIf="emailaddress.touched && emailaddress.invalid" class="alert alert-box error-text">
@@ -18,7 +20,7 @@
             </div>
         </div>
     
-        <div class="container">
+        <div>
             <label>New Password</label>
             <input class="form-control" formControlName="newpassword">
             <div *ngIf="newpassword.touched && newpassword.invalid" class="alert alert-box error-text">
@@ -26,7 +28,7 @@
             </div>        
         </div>
     
-        <div class="container">
+        <div>
             <label>Confirm New Password</label>
             <input class="form-control" formControlName="confirmpassword">
             <div *ngIf="confirmpassword.touched && confirmpassword.invalid" class="alert alert-box error-text">
@@ -35,13 +37,13 @@
             
         </div>
     
-        <button  class="btn btn-primary RegisterBtn" (click)="submit(newpassword,confirmpassword)" [disabled]="form.invalid">SUBMIT</button>
+        <button  class="btn btn-primary Submitbtn" (click)="submit(newpassword,confirmpassword)" [disabled]="form.invalid">SUBMIT</button>
         
         <div class="title-down">
             <label>Already have an account?</label>
         </div>
     
-        <button routerLink="/signin" class="btn btn-primary SignInbtn">Sign in</button>
+        <button routerLink="/usersignin" class="btn btn-primary Submitbtn">Sign in</button>
     </div>
     
 </form>

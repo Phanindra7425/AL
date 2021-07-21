@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { FormValidator } from '../validators/form-validator';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'reset-page',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class ResetPageComponent{
 
   form: FormGroup;
-  constructor(fb:FormBuilder,private router:Router){
+  constructor(fb:FormBuilder,private router:Router,private authoriser:AngularFireAuth){
     this.form = fb.group({
       emailaddress: ['',[Validators.required,Validators.email,FormValidator.emailValidator]],
       newpassword: ['',Validators.required],
@@ -39,12 +40,13 @@ export class ResetPageComponent{
             this.form.setErrors({
               passwordMatchValidator: res.passwordMatchValidator
             })
-          }
-          if(this.form.errors){
             this.form.setValue({emailaddress:'',newpassword:'',confirmpassword:''});
           }
+          else{
+           
+          }
+            
         });
-
     
   }
 

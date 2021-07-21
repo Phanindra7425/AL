@@ -1,11 +1,17 @@
-<form [formGroup]="form" class="Login LoginPage" >
+<form [formGroup]="form" class="main" #f = 'ngForm' >
 
-    <div class="Loginform">
+    <div class="inputsbox">
+
+        
+        <div *ngIf="errorMsg" class="alert alert-box error-text">
+            <a>{{errorMsg}}</a>
+        </div>
+
         <div class="title-start">
             <label >Sign In To Your Account</label>
         </div>
     
-        <div class="container">
+        <div>
             <label>Email Address</label>
            <input formControlName="username" class="form-control">
            <div *ngIf="username.touched && username.invalid" class="alert alert-box error-text">
@@ -15,9 +21,9 @@
            </div>
         </div>
     
-        <div class="container">
+        <div>
             <label>Password</label>
-           <input formControlName="password" class="form-control" (click)="enabled()">
+           <input formControlName="password" class="form-control">
            <div *ngIf="password.touched && password.invalid" class="alert alert-box error-text">
                 <div *ngIf="password.errors.required">*Password is required</div>
             </div>
@@ -30,7 +36,7 @@
             
         </div>
     
-        <button class="btn btn-primary SignInButton">SignIn</button>
+        <button class="btn btn-primary Submitbtn" (click)="SignIn(f)">SignIn</button>
 
     
         <div class="link">

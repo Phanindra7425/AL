@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
@@ -8,6 +11,9 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule } from '@angular/router';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { environment } from 'src/environments/environment';
+import { LoginguardService } from './loginguard.service';
 
 @NgModule({
   declarations: [
@@ -15,11 +21,15 @@ import { RouterModule } from '@angular/router';
     SignInPageComponent,
     SignUpPageComponent,
     ResetPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
@@ -27,20 +37,28 @@ import { RouterModule } from '@angular/router';
         component:HomePageComponent
       },
       {
-        path:'signin',
-        component:SignInPageComponent
+        path:'usersignin',
+        component:SignInPageComponent,
+        canActivate:[LoginguardService]
       },
       {
         path:'signup',
-        component:SignUpPageComponent
+        component:SignUpPageComponent,
+        canActivate:[LoginguardService]
       },
       {
         path:'reset',
-        component:ResetPageComponent
+        component:ResetPageComponent,
+        canActivate:[LoginguardService]
+      },
+      {
+        path:'signin',
+        component:SignInComponent,
+        canActivate:[LoginguardService]
       }
     ]),
   ],
-  providers: [],
+  providers: [LoginguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

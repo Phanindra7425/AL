@@ -12,13 +12,19 @@
                 <label>Cart</label> 
             </button>              
         </div>
+
         <div class="nav-right2">
             <button class="btn-right" routerLink="/signin">
                 <i class="bi bi-person-fill"></i> 
-                <label>Account</label>
+                <label>{{Profile}}</label>
             </button>
-            
+                
+            <button  class="btn-right" *ngIf="enable" (click)="Logout()">
+                <label>Logout</label>
+            </button>
+
         </div>
+        
     </nav>
 
     <div>
