@@ -5,8 +5,14 @@
 .inputsbox{
     margin: auto;
     width: 300px;
+}
+
+.container{
+    margin: auto;
+    width: 350px;
     margin-top: 100px;
 }
+
 
 .Submitbtn{
     width: 200px;
@@ -32,7 +38,6 @@
     margin-bottom: 30px;
     font-weight: bold;
     font-style: normal;
-
 }
 
 .title-down{
@@ -72,3 +77,6 @@
     font-weight: bolder;
 }
 
+.pswdbtn{
+    border: transparent;
+}

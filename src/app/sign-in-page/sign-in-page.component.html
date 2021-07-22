@@ -1,6 +1,6 @@
 <form [formGroup]="form" class="main" #f = 'ngForm' >
 
-    <div class="inputsbox">
+    <div class="container">
 
         
         <div *ngIf="errorMsg" class="alert alert-box error-text">
@@ -12,22 +12,30 @@
         </div>
     
         <div>
-            <label>Email Address</label>
-           <input formControlName="username" class="form-control">
-           <div *ngIf="username.touched && username.invalid" class="alert alert-box error-text">
-               <div *ngIf="username.errors.required">*Email address is required</div>
-               <div *ngIf="username.errors.email">*Please enter a valid email address</div>
-               <div *ngIf="username.errors.cannotContainSpacesInEmail">*Cannot contain spaces in middle</div>
-           </div>
+            <mat-form-field class="inputsbox">
+                <mat-label>Email Address</mat-label>
+                <input formControlName="username" matInput placeholder="...@email.com">
+                <mat-error  class="error-text" *ngIf="username.invalid">
+                    <div *ngIf="username.errors.required">*Email address is required</div>
+                    <div *ngIf="username.errors.email">*Please enter a valid email address</div>
+                    <div *ngIf="username.errors.cannotContainSpacesInEmail">*Cannot contain spaces in middle</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="inputsbox">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput [type]="hide?'password':'text'">
+                <mat-error  class="error-text" *ngIf="username.invalid">
+                    <div *ngIf="password.errors.required">*Password is required</div>
+                </mat-error>
+                <button mat-icon-button matSuffix  class="pswdbtn" (click)="hide=!hide">
+                    <mat-icon>{{ hide? 'visibility_off': 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
         </div>
     
-        <div>
-            <label>Password</label>
-           <input formControlName="password" class="form-control">
-           <div *ngIf="password.touched && password.invalid" class="alert alert-box error-text">
-                <div *ngIf="password.errors.required">*Password is required</div>
-            </div>
-        </div>
         <a class="forgotpswd" routerLink="/reset">Forgot Password</a>
         <div class="checkbox">
             <label>

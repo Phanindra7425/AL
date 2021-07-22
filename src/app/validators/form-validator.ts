@@ -10,15 +10,21 @@ export class FormValidator {
     }
 
     static passwordValidator(control:AbstractControl):ValidationErrors | null{
-        let re = RegExp("[a-zA-Z0-9!@#$%^&*]*");
+        console.log('in pswd validator')
         let val = control.value as string;
-        let errorObj: ValidationErrors | null = {};
+        let errorObj: ValidationErrors | null = {
+            havesmallcharacters:false,
+            haveUppercasecharacters:false,
+            havenumbers: false,
+            havespecialcharacters: false
+        };
         if((RegExp('[a-z]').test(val))) errorObj.havesmallcharacters = true;
         if((RegExp('[A-Z]').test(val))) errorObj.haveUppercasecharacters = true;
         if((RegExp('[0-9]').test(val))) errorObj.havenumbers = true;
         if((RegExp('[!@#$%^&*]').test(val))) errorObj.havespecialcharacters = true;
 
-        return (errorObj.length == null)? null: errorObj;
+        console.log(errorObj);
+        return errorObj;
 
     }
 

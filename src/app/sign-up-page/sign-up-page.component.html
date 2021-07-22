@@ -1,6 +1,6 @@
 <form class="Register RegisterPage" #R="ngForm" [formGroup]="form" (ngSubmit)="Register(R)">
 
-    <div class="inputsbox">
+    <div class="container">
         <div *ngIf="form.errors" class="alert alert-box error-text">
             *Please enter the below details
        </div>
@@ -14,39 +14,51 @@
            <label>Create Your Account</label>
        </div>
        <div>
-           <label>First name</label>
-           <input formControlName="firstname" class="form-control">
-           <div *ngIf="firstname.touched && firstname.invalid" class="alert alert-box error-text">
-               <div *ngIf="firstname.errors.required">*First name is required</div>
-               <div *ngIf="firstname.errors.minlength">*First name is should be of {{ firstname.errors.minlength }} length</div>
-           </div>
+            <mat-form-field class="inputsbox">
+                <mat-label>First name</mat-label>
+                <input formControlName="firstname" matInput placeholder="First name">
+                <mat-error  class="error-text" *ngIf="firstname.invalid">
+                    <div *ngIf="firstname.errors.required">*First name is required</div>
+                    <div *ngIf="firstname.errors.minlength">*First name is should be of {{ firstname.errors.minlength }} length</div>
+                </mat-error>
+            </mat-form-field>
        </div>
    
        <div>
-           <label>Last name</label>
-           <input formControlName="lastname" class="form-control">
-           <div *ngIf="lastname.touched && lastname.invalid" class="alert alert-box error-text">
-               <div *ngIf="lastname.errors.required">*Last name is required</div>
-               <div *ngIf="lastname.errors.minlength">*Last name is should be of {{ lastname.errors.minlength }} length</div>
-           </div>
+        <mat-form-field class="inputsbox">
+            <mat-label>Last name</mat-label>
+            <input formControlName="lastname" matInput placeholder="Last name">
+            <mat-error  class="error-text" *ngIf="lastname.invalid">
+                <div *ngIf="lastname.errors.required">*First name is required</div>
+                <div *ngIf="lastname.errors.minlength">*First name is should be of {{ firstname.errors.minlength }} length</div>
+            </mat-error>
+        </mat-form-field>
        </div>
    
        <div>
-           <label>Email Address</label>
-           <input formControlName="username" class="form-control">
-           <div *ngIf="username.touched && username.invalid" class="alert alert-box error-text">
-               <div *ngIf="username.errors.required">*Email address is required</div>
-               <div *ngIf="username.errors.email">*Please enter a valid email address</div>
-               <div *ngIf="username.errors.cannotContainSpacesInEmail">*Cannot contain spaces in middle</div>
-           </div>
+        <mat-form-field class="inputsbox">
+            <mat-label>Email Address</mat-label>
+            <input formControlName="username" matInput placeholder="...@email.com">
+            <mat-error  class="error-text" *ngIf="username.invalid">
+                <div *ngIf="username.errors.required">*Email address is required</div>
+                <div *ngIf="username.errors.email">*Please enter a valid email address</div>
+                <div *ngIf="username.errors.cannotContainSpacesInEmail">*Cannot contain spaces in middle</div>
+            </mat-error>
+        </mat-form-field>
        </div>
    
        <div>
-           <label>Password</label>
-           <input formControlName="password" class="form-control" (click)="enabled()">
-           <div *ngIf="password.touched && password.invalid" class="alert alert-box error-text">
-                <div *ngIf="password.errors.required">*Password is required</div>
-            </div>
+            <mat-form-field class="inputsbox">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput [type]="hide?'password':'text'">
+                <mat-error  class="error-text" *ngIf="username.invalid">
+                    <div *ngIf="password.errors.required">*Password is required</div>
+                </mat-error>
+                <button mat-icon-button matSuffix  class="pswdbtn" (click)="hide=!hide">
+                    <mat-icon>{{ hide? 'visibility_off': 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            
            <div class="PasswordRules" *ngIf="true" >
                <div class="bi bi-x"*ngIf="!password.errors.maxlength">Password should be of 16 charactes</div>
                <div class="bi bi-x"*ngIf="!password.errors.havesmallcharacters">should contain small characters</div>
@@ -68,7 +80,7 @@
            </label>
        </div>
    
-       <button class="btn btn-primary Submitbtn" >Register</button>
+       <button  class="btn btn-primary Submitbtn" >Register</button>
    
        <div class="title-down">
            <label>Already have an account?</label>

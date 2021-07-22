@@ -17,6 +17,7 @@ export class SignUpPageComponent {
   }
   enable = false;
   errorMsg: any;
+  hide = true;
   form = new FormGroup({
     firstname:new FormControl('',[Validators.required,Validators.minLength(3)]),
     lastname:new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -60,6 +61,7 @@ export class SignUpPageComponent {
                 displayName : fname + lname
               }).then(()=>{
                 //update successfull
+                this.router.navigate(['/']);
               }).catch((err)=>{
                 //update failed
               })
