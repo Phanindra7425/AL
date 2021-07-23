@@ -6,7 +6,7 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
       
-      <table mat-table [dataSource]="dataSource" >
+      <table mat-table [dataSource]="dataSource">
       
         <!-- Product Column -->
         <ng-container matColumnDef="title">
@@ -30,7 +30,7 @@
         <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef> EDIT </th>
           <td mat-cell *matCellDef="let element"> 
-              <a (click)="editproduct(element)">Edit</a>
+              <a [routerLink]="['/edit-product',element.key]" (click)="editproduct(element)">Edit</a>
          </td>
         </ng-container>
       

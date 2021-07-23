@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CategoryService } from '../category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'edit-product',
@@ -18,8 +20,12 @@ export class EditProductComponent{
     category: new FormControl('',[Validators.required]),
     imageURL: new FormControl('')
   });
-  constructor(private productService:ProductService) {
+  constructor(private productService:ProductService, category:CategoryService, private router:Router) {
 
+    category.getCategories().subscribe((res)=>{
+      this.categories = res
+    })
+    
     this.productinfo = this.productService.ProducttobeEdited;
     console.log(this.productinfo);
     if(this.productinfo){
@@ -30,6 +36,8 @@ export class EditProductComponent{
         imageURL: this.productinfo.imageURL
       })
     }
+
+
   }  
 
   get title(){
@@ -50,11 +58,12 @@ export class EditProductComponent{
 
 
   updateproduct(product:any){
-    if(this.form.invalid || (product.category && product.price && product.title)){
-      this.errorMsg = "*Please enter all details";
-    }
-    else if(product.category && product.price && product.title){
-      this.productService.updateProduct('1234' , product);
+    if((product.category && product.price && product.title)){
+      this.productService.updateProduct(product).then((res)=>{
+        this.router.navigate(['/manage-products']);
+      }).catch((err)=>{
+        this.errorMsg = "*Please enter all details";
+      })
     }
   }
 

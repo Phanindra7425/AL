@@ -23,20 +23,20 @@ export class ProductService {
   }
 
   getAllProducts(){
-    
-    return this.db.list('/Products').valueChanges();
+    return this.db.list('/Products');
   }
 
-  updateProduct(productId:any,product:any){
+  updateProduct(product:any){
+  
+    let updatedobj = {
+      category:product.category,
+      imageURL:product.imageURL,
+      price:product.price,
+      title:product.title
+    }
 
-    console.log('in product service')
-    this.db.object('/Products').snapshotChanges()
-    .subscribe( (items: any) =>{
-      console.log(items.payload.val());
-    })
-    
-
-    //return this.db.object('/Produts' + productId).update(product);
+    let id = localStorage.getItem('id');
+    return this.db.object('Products/' + id).update(updatedobj)
 
   }
 }
