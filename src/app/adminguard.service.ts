@@ -4,12 +4,11 @@ import { CanActivate } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthguardService implements CanActivate{
+export class AdminguardService implements CanActivate{
 
   active = false;
 
   canActivate(){
-
     return this.active;
   }
 }

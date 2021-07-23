@@ -1,0 +1,69 @@
+<form [formGroup]="form" #f="ngForm" (ngSubmit)="createproduct(f.value)">
+
+
+
+    <div class="productsbox-left">
+
+        <div *ngIf="errorMsg" class="alert alert-box error-text error">
+            <a>{{errorMsg}}</a>
+        </div>
+
+        <div class="inputs">
+            <div>
+                <label class="text" for="tite">Title</label>
+                <input class="inputbox" formControlName="title" type="text" class="form-control">
+                <div  class="error-text" *ngIf="title.invalid && title.touched">
+                    <div *ngIf="title.errors.required">*Title address is required</div>
+                </div>
+            </div>    
+            <div>
+                <label class="text" for="Price">Price</label>
+                <input class="form-control" formControlName="price" type="number" >
+                <div  class="error-text" *ngIf="price.invalid && price.touched">
+                    <div *ngIf="price.errors.required">*Price is required</div>
+                </div>
+            </div>    
+            <div>
+                <label  class="text" for="Category">Category</label>
+                <select formControlName="category" id="Category" class="form-control">
+                    <option></option>
+                    <option *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+                <div  class="error-text" *ngIf="category.invalid && category.touched">
+                    <div *ngIf="category.errors.required">*Category is required</div>
+                </div>
+            </div>    
+            <div>
+                <label  class="text" for="imageUrl">ImageURL</label>
+                <input formControlName="imageURL" id="imageUrl" type="text" class="form-control">
+            </div>    
+            <!-- <p>{{ f.value | json }}</p> -->
+            <button class="btn btn-primary Submitbtn">SAVE</button>
+    
+        </div>
+
+        
+    </div>
+
+    <div class="productsbox-left">
+        <mat-card class="card">
+            <div>
+                <img mat-card-image src="{{f.value.imageURL}}" >
+            </div>
+            <mat-card-content class="card-content">
+                <p>
+                    {{f.value.title}}
+                </p>
+                <p>
+                    {{f.value.price}}
+                </p>
+                
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+
+
+    
+</form>

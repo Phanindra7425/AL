@@ -6,19 +6,18 @@ import { CanActivate } from '@angular/router';
 })
 export class LoginguardService implements CanActivate{
 
-  private shouldenable: boolean = true;
+  private isLoggedin: boolean = false;
   constructor() { }
 
   canActivate(){
-
-    return this.shouldenable;
+    return !this.isLoggedin;
   }
 
-  set shouldEnable(value:boolean){
-    this.shouldenable = value;
+  set isLoggedIn(value:boolean){
+    this.isLoggedin = value;
   }
 
-  get shouldEnable(){
-    return this.shouldenable;
+  get isLoggedIn(){
+    return this.isLoggedin;
   }
 }

@@ -13,6 +13,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
@@ -25,7 +28,12 @@ import { environment } from 'src/environments/environment';
 import { LoginguardService } from './loginguard.service';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
-import { AuthguardService } from './authguard.service';
+import { AdminguardService } from './adminguard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { CategoryService } from './category.service';
+import { ProductService } from './product.service';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 @NgModule({
@@ -37,7 +45,10 @@ import { AuthguardService } from './authguard.service';
     HomePageComponent,
     SignInComponent,
     AdminOrdersComponent,
-    ManageOrdersComponent
+    ManageOrdersComponent,
+    ProductFormComponent,
+    MyOrdersComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,10 @@ import { AuthguardService } from './authguard.service';
     MatCheckboxModule,
     MatButtonModule,
     MatToolbarModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatMenuModule,
+    MatCardModule,
     MatBadgeModule,
     MatFormFieldModule,
     MatIconModule,
@@ -81,18 +95,37 @@ import { AuthguardService } from './authguard.service';
         canActivate:[LoginguardService]
       },
       {
-        path:'admin-orders',
-        component:AdminOrdersComponent,
-        canActivate:[AuthguardService]
+        path:'my-orders',
+        component:MyOrdersComponent,
       },
       {
-        path:'manage-orders',
+        path:'admin-orders',
+        component:AdminOrdersComponent,
+        canActivate:[AdminguardService]
+      },
+      {
+        path:'admin/products/new',
+        component:ProductFormComponent,
+        canActivate:[AdminguardService]
+      },
+      {
+        path:'manage-products',
         component:ManageOrdersComponent,
-        canActivate:[AuthguardService]
+        canActivate:[AdminguardService]
+      },
+      {
+        path:'edit-product/:id',
+        component:EditProductComponent,
+        canActivate:[AdminguardService]
       }
     ]),
   ],
-  providers: [LoginguardService,AuthguardService],
+  providers: [
+    LoginguardService,
+    AdminguardService,
+    CategoryService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

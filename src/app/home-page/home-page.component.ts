@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { LoginguardService } from '../loginguard.service';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { FormGroup, FormControl } from '@angular/forms';
 import { DbserviceService } from '../dbservice.service';
-import { AuthguardService } from '../authguard.service';
+import { AdminguardService } from '../adminguard.service';
 
 @Component({
   selector: 'home-page',
@@ -35,17 +34,16 @@ export class HomePageComponent{
 
 
   constructor(private auth:AngularFireAuth, private router:Router, private loginguard:LoginguardService,
-    private userService:DbserviceService,private authguard:AuthguardService){
+    private userService:DbserviceService,private admin:AdminguardService, private route:ActivatedRoute){
     this.auth.onAuthStateChanged((response)=>{
       if(response?.displayName){
         this.Profile = response.displayName;
         this.enable = !this.enable;
-        this.loginguard.shouldEnable = false;
+        this.loginguard.isLoggedIn = true;
         this.userService.get(response.uid).then((res:any)=>{
-          console.log('newvalue')
           if(res.val()){
             this.isAdmin = res.val().isAdmin;
-            this.authguard.active = true;
+            this.admin.active = true;
           }
         })
       }
@@ -60,11 +58,21 @@ export class HomePageComponent{
     this.auth.signOut().then(()=>{
       this.Profile = 'Sign In';
       this.enable = !this.enable;
-      this.loginguard.shouldEnable = true;
+      this.loginguard.isLoggedIn = false;
       this.router.navigate(['/']);
     }).catch((error)=>{
       console.log(error);
     });
+  }
+
+  myorders(){
+
+    if(this.loginguard.isLoggedIn){
+      this.router.navigate(['/my-orders']);
+    }else{
+      localStorage.setItem('returnUrl','/my-orders');
+    }
+
   }
 
 

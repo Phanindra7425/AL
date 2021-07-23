@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, QueryFn } from '@angular/fire/database';
 import firebase from 'firebase'
 import { TypeScriptEmitter } from '@angular/compiler';
 import { Observable } from 'rxjs';
+import { query } from '@angular/animations';
 
 
 @Injectable({
@@ -24,14 +25,17 @@ export class DbserviceService {
    
   }
   save(user:firebase.User){
-    // this.db.object('/users/'+ user.uid).set({
-    //   name:user.displayName,
-    //   email: user.email
-    // })
-
     this.db.object('/users/' + user.uid).update({
       name:user.displayName,
       email: user.email
     })
+  }
+
+  getCategories(){
+    return this.db.list('/Categories/', ref => ref.orderByChild('name')).valueChanges();
+  }
+
+  createProduct(detail:any){
+    this.db.list('/Products',ref => ref.orderByChild('name')).push(detail);
   }
 }

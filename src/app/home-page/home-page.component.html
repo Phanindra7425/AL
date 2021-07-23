@@ -17,8 +17,9 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/signin">{{Profile}}</button>
-          <button *ngIf="isAdmin" mat-menu-item routerLink="/admin-orders">Admin Orders</button>
-          <button *ngIf="isAdmin" mat-menu-item routerLink="/manage-orders">Manage Orders</button>
+          <button mat-menu-item (click)="myorders()">My Orders</button>
+          <button *ngIf="isAdmin" mat-menu-item routerLink="/admin-orders">Manage Orders</button>
+          <button *ngIf="isAdmin" mat-menu-item routerLink="/manage-products">Manage Products</button>
           <button *ngIf="enable" mat-menu-item (click)="Logout()">LogOut</button>
         </mat-menu>
 

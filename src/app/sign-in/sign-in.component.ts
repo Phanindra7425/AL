@@ -35,7 +35,14 @@ export class SignInComponent {
     this.authoriser.signInWithPopup(provider).then((response)=>{
       if(response.user){
         this.userService.save(response.user);
-        this.router.navigate(['/']);
+        var returl = localStorage.getItem('returnUrl')
+        if(returl){
+          console.log(returl);
+          this.router.navigate([returl]);
+        }else{
+          this.router.navigate(['/']);
+        }
+        
       }
 
     }).catch((error)=>{
