@@ -1,29 +1,4 @@
-<div class="homePage" @fade>
-    <mat-toolbar>
-        <div class="nav-left">
-            <button class="btn-home" routerLink="/">
-                <i class="bi bi-bag-plus">
-                </i> 
-            </button>   
-        </div>
-        <button class="btn-right" (click)="cart()">
-            <i class="bi bi-cart" [matBadge]="cartvalue" matBadgeColor="accent"></i>                
-            <label  class="text" >Cart</label> 
-        </button> 
-        
-        <button mat-button [matMenuTriggerFor]="menu">
-            <i class="bi bi-person-fill"></i> 
-            <label  class="text">{{Profile}}</label>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/signin">{{Profile}}</button>
-          <button mat-menu-item (click)="myorders()">My Orders</button>
-          <button *ngIf="isAdmin" mat-menu-item routerLink="/admin-orders">Manage Orders</button>
-          <button *ngIf="isAdmin" mat-menu-item routerLink="/manage-products">Manage Products</button>
-          <button *ngIf="enable" mat-menu-item (click)="Logout()">LogOut</button>
-        </mat-menu>
-    </mat-toolbar>
-
+<div>
    <div class="grid-left">
 
    </div> 

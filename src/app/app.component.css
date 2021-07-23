@@ -1,0 +1,52 @@
+.homePage{
+    width: 100%;
+}
+
+.bi-bag-plus {
+    font-size: 20px;
+    margin: 10px;
+}
+.bi-person-fill{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.bi-cart{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.btn-home{
+    width: 150px;
+    height: 72px;
+    border-color: transparent;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.btn-right{
+    border-color: transparent;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+a {
+    color: black;
+}
+
+.nav-left{
+    width:60%
+}
+
+
+.cart{
+    width: 20%;
+}
+
+.text{
+    font-size: medium;
+}
+
+.containers{
+    width: 60%;
+}

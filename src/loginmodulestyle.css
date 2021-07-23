@@ -1,7 +1,9 @@
 .main{
     width: 100%;
 }
-
+.main{
+    margin-top: 150px;
+}
 .inputsbox{
     margin: auto;
     width: 300px;

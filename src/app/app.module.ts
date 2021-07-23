@@ -71,7 +71,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
-        path:'home',
+        path:'',
         component:HomePageComponent
       },
       {
