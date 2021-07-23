@@ -5,6 +5,8 @@ import { LoginguardService } from '../loginguard.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { DbserviceService } from '../dbservice.service';
 import { AdminguardService } from '../adminguard.service';
+import { Product } from '../manage-orders/manage-orders.component';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'home-page',
@@ -31,10 +33,12 @@ export class HomePageComponent{
   isAdmin = false;
   form: any;
   Profile = "Sign In"
+  dataSource: any[] =[];
 
 
   constructor(private auth:AngularFireAuth, private router:Router, private loginguard:LoginguardService,
-    private userService:DbserviceService,private admin:AdminguardService, private route:ActivatedRoute){
+    private userService:DbserviceService,private admin:AdminguardService, private route:ActivatedRoute,
+    private productService:ProductService){
     this.auth.onAuthStateChanged((response)=>{
       if(response?.displayName){
         this.Profile = response.displayName;
@@ -49,7 +53,17 @@ export class HomePageComponent{
       }
     })
 
+    this.productService.getAllProducts().snapshotChanges()
+      .subscribe((data: any)=>{
+         console.log(data);
+         data.forEach((element: any)=>{
+          this.dataSource.push(element.payload.val());
+        })
+      });
+
   }
+
+
   cart(){
     this.text = "cart form loads";
   }

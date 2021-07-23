@@ -46,3 +46,15 @@ a {
 .text{
     font-size: medium;
 }
+
+.containers{
+    width: 60%;
+}
+
+.grid-right{
+    width:60%;
+}
+
+.grid-left{
+    width: 40%;
+}

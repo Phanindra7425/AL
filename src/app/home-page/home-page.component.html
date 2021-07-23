@@ -22,18 +22,32 @@
           <button *ngIf="isAdmin" mat-menu-item routerLink="/manage-products">Manage Products</button>
           <button *ngIf="enable" mat-menu-item (click)="Logout()">LogOut</button>
         </mat-menu>
-
-
-        <!-- <button class="btn-right" routerLink="/signin">
-            <i class="bi bi-person-fill"></i> 
-            <label  class="text">{{Profile}}</label>
-        </button> -->
-        <!-- <button  class="btn-right" *ngIf="enable" (click)="Logout()">
-            <label class="text">Logout</label>
-        </button> -->
     </mat-toolbar>
 
-    <div>
-       {{ text }}
-    </div>
+   <div class="grid-left">
+
+   </div> 
+
+   <div class="grid-right">
+    <div class="containers">
+     
+        <div class="row">
+            <ng-container *ngFor="let products of dataSource; let i = index">
+                <div class="col" style="width: 200px;">
+                    <mat-card class="card">
+                        <img mat-card-image src="{{products.imageURL}}" >
+                        <mat-card-content class="card-content">
+                            <p>{{products.title}}</p>
+                            <p>{{products.price }}</p>  
+                            <button class="btn btn-primary Cart">Add to Cart</button>              
+                        </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <div *ngIf="(i+1)%2===0"class="w-100"></div>
+            </ng-container>
+        </div>
+      </div>
+   </div>
+    
+    
 </div>
